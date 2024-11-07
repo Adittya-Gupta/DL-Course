@@ -201,8 +201,8 @@ class Classifier(object):
         """
         # entropy = - (probas * torch.log(probas + 1e-10)).sum(2)
         # entropy = self._valid_mean(entropy, valid_pixels, (1, 2, 3))
-        entropy = ((1-(torch.pow(probas.mean(0), self.alpha_values)).sum(1))/(self.alpha_values-1))
-        entropy = self._valid_mean(entropy, valid_pixels, (0, 1, 2))
+        entropy = ((1-(torch.pow(probas, self.alpha_values)).sum(2))/(self.alpha_values-1))
+        entropy = self._valid_mean(entropy, valid_pixels, (1, 2, 3))
         marginal = self._valid_mean(probas, valid_pixels.unsqueeze(2), (1, 3, 4))
 
         d_kl = (marginal * torch.log(1e-10 + marginal / (self.pi + 1e-10))).sum(1)
