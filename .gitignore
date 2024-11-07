@@ -12,7 +12,6 @@ data/coco/*
 !.gitignore
 !data/coco/*.py
 
-
 *.pkl
 *.tar.gz
 *.npy
