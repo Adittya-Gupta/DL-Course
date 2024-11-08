@@ -26,7 +26,7 @@ EVALUATION:
   ckpt_used: model
   test_num: -1  # i.e., use all the test data
   shot: 5
-  batch_size_val: 50  # Trade-off between speed and memory usage, no effect on the results
+  batch_size_val: 100  # Trade-off between speed and memory usage, no effect on the results
   n_runs: 5
   support_only_one_novel: True  # It might help the model unfairly if a single support image has information about multiple novel classes, so set to True
   use_training_images_for_supports: False
@@ -39,7 +39,7 @@ CLASSIFIER:
   weights: [100, 1, 1, 100]
   adapt_iter: 100
   cls_lr: 0.00125
-  alpha: 0.8
+  alpha: 0.5
   pi_estimation_strategy: self  # ['uniform', 'self', 'imglvl', 'upperbound']
   pi_update_at: [10]
   fine_tune_base_classifier: True

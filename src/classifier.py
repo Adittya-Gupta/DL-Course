@@ -233,10 +233,10 @@ class Classifier(object):
         probas[:, :, 0, ...] += probas[:, :, 1:self.num_base_classes_and_bg, ...].sum(dim=2)
         probas[:, :, 1:self.num_base_classes_and_bg, ...] = 0.
 
-        # ce = - (one_hot_gt * torch.log(probas + 1e-10))
-        ce = torch.pow(one_hot_gt, self.alpha_values) * torch.pow(probas + 1e-10, 1 - self.alpha_values)
+        ce = - (one_hot_gt * torch.log(probas + 1e-10))
+        # ce = torch.pow(one_hot_gt, self.alpha_values) * torch.pow(probas + 1e-10, 1 - self.alpha_values)
         ce = (ce * compute_wce(one_hot_gt, self.num_novel_classes)).sum(2)
-        ce = ((1 - ce)/(self.alpha_values-1))
+        # ce = ((1 - ce)/(self.alpha_values-1))
         ce = self._valid_mean(ce, valid_pixels, (1, 2, 3))  # [batch_size_val,]
 
         if reduction == 'sum':
