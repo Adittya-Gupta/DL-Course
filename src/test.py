@@ -55,7 +55,7 @@ def main_worker(rank: int, world_size: int, args: argparse.Namespace) -> None:
 
 
 def validate(args: argparse.Namespace, val_loader: torch.utils.data.DataLoader, model: DDP) -> Tuple[torch.tensor, torch.tensor]:
-    print('\n==> Start testing ({} runs)'.format(args.n_runs), flush=True)
+    print('\n==> Start testing ({} runs) with alpha={}'.format(args.n_runs, args.alpha), flush=True)
     random_state = setup_seed(args.manual_seed, return_old_state=True)
     device = torch.device('cuda:{}'.format(dist.get_rank()))
     model.eval()
