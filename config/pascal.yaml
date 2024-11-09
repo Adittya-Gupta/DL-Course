@@ -39,7 +39,7 @@ CLASSIFIER:
   weights: [100, 1, 1, 100]
   adapt_iter: 100
   cls_lr: 0.00125
-  alpha: 0.9
+  alpha: 0.5
   pi_estimation_strategy: self  # ['uniform', 'self', 'imglvl', 'upperbound']
   pi_update_at: [10]
   fine_tune_base_classifier: True
