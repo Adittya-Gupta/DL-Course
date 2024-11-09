@@ -3,6 +3,7 @@ SHOT=$2
 PI=$3
 GPU=$4
 FILENAME=$5
+ALPHA=$6
 
 if [ ${BENCHMARK} == "pascal5i" ]
 then
@@ -27,6 +28,7 @@ do
               pi_estimation_strategy ${PI} \
               n_runs 5 \
               gpus ${GPU} \
+              alpha ${ALPHA} \
               |& tee -a ${FILENAME}
   printf "\n" >> ${FILENAME}
 done
